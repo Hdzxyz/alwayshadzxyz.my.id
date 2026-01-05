@@ -3,686 +3,631 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hadzxyz Store - Sedia Hosting Bot Amanah Dan Berkualitas</title>
+    <title>Portofolio - KAA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Reset dan variabel warna */
+        :root {
+            --primary-color: #8a2be2;
+            --primary-dark: #6a0dad;
+            --secondary-color: #e6d5ff;
+            --accent-color: #c77dff;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f5ff;
+            --text-color: #333;
+            --text-light: #f8f5ff;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --border-radius: 20px;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(138, 43, 226, 0.15);
+            --shadow-hover: 0 15px 40px rgba(138, 43, 226, 0.25);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #8b5cf6;
-            --primary-dark: #7c3aed;
-            --primary-light: #a78bfa;
-            --secondary: #f59e0b;
-            --secondary-dark: #d97706;
-            --vps-color: #10b981;
-            --vps-dark: #059669;
-            --dark: #0f0f23;
-            --darker: #090917;
-            --light: #f8fafc;
-            --gray: #94a3b8;
-            --gradient: linear-gradient(135deg, #8b5cf6, #6366f1);
-            --gradient-dark: linear-gradient(135deg, #7c3aed, #4f46e5);
-            --gradient-secondary: linear-gradient(135deg, #f59e0b, #f97316);
-            --gradient-vps: linear-gradient(135deg, #10b981, #059669);
-            --card-bg: rgba(20, 20, 40, 0.7);
-            --card-border: rgba(139, 92, 246, 0.3);
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--darker);
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
-            color: var(--light);
             line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
             overflow-x: hidden;
-            scroll-behavior: smooth;
+            position: relative;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(15, 15, 35, 0.9);
-            backdrop-filter: blur(10px);
+        body::before {
+            content: '';
             position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 30%, rgba(199, 125, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 50% 80%, rgba(230, 213, 255, 0.1) 0%, transparent 20%);
+            z-index: -1;
         }
 
-        .navbar {
+        /* Header dan Navigasi */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow);
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        }
+
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 10px rgba(139, 92, 246, 0.3);
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: var(--primary-color);
         }
 
         .logo i {
-            font-size: 1.8rem;
+            margin-right: 10px;
+            font-size: 2rem;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s;
-            font-weight: 500;
+        /* Menu titik tiga */
+        .menu-toggle {
             position: relative;
-            padding: 5px 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-light);
-        }
-
-        .cta-button {
-            background: var(--gradient);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            display: flex;
             align-items: center;
-            gap: 8px;
-            border: none;
+            justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
         }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.5);
-            background: var(--gradient-dark);
+        .menu-toggle:hover {
+            background-color: var(--primary-color);
+            transform: rotate(90deg);
         }
 
-        .cta-button.secondary {
-            background: var(--gradient-secondary);
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+        .menu-toggle:hover .dot {
+            background-color: white;
         }
 
-        .cta-button.secondary:hover {
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
-            background: linear-gradient(135deg, #f97316, #ea580c);
+        .dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            margin: 0 2px;
+            transition: var(--transition);
         }
 
-        .cta-button.vps {
-            background: var(--gradient-vps);
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-hover);
+            width: 250px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 1001;
         }
 
-        .cta-button.vps:hover {
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
-            background: linear-gradient(135deg, #059669, #047857);
+        .dropdown-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(10px);
         }
 
-        /* Hero Section dengan Video Background */
-        .hero {
-            min-height: 100vh;
+        .dropdown-menu ul {
+            list-style: none;
+        }
+
+        .dropdown-menu li {
+            padding: 0.8rem 1.5rem;
+            transition: var(--transition);
+        }
+
+        .dropdown-menu li:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .dropdown-menu a {
+            text-decoration: none;
+            color: var(--text-color);
             display: flex;
             align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
+            font-weight: 500;
         }
 
-        .video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            overflow: hidden;
+        .dropdown-menu i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            width: 20px;
         }
 
-        .video-background video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            opacity: 0.15;
-            filter: brightness(0.8) contrast(1.2) saturate(1.5);
+        /* Main content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(9, 9, 23, 0.9) 0%, rgba(15, 15, 35, 0.7) 50%, rgba(9, 9, 23, 0.9) 100%);
-            z-index: 2;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 700px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff, var(--primary-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: slideUp 1s ease-out;
-            line-height: 1.2;
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            margin-bottom: 2rem;
-            animation: slideUp 1s ease-out 0.2s both;
-            max-width: 600px;
-        }
-
-        /* Animated Particles Background */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
-            opacity: 0.3;
-        }
-
-        /* Packages Section */
-        .packages {
-            padding: 100px 0;
-            background-color: rgba(15, 15, 35, 0.5);
-            position: relative;
-            z-index: 2;
+        section {
+            padding: 6rem 0;
         }
 
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 10px rgba(139, 92, 246, 0.3);
-        }
-
-        .section-title p {
-            color: var(--gray);
-            font-size: 1.1rem;
-        }
-
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .package-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
-            border: 1px solid var(--card-border);
+            color: var(--primary-color);
             position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
         }
 
-        .package-card::before {
+        .section-title::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
             height: 4px;
-            background: var(--gradient);
+            background-color: var(--accent-color);
+            border-radius: 2px;
         }
 
-        .package-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
-            border-color: rgba(139, 92, 246, 0.5);
-        }
-
-        .package-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--light);
-        }
-
-        .package-price {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .package-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .package-features li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        /* Hero Section - DIPERBARUI untuk Desktop */
+        .hero {
+            padding-top: 10rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
+            min-height: 100vh;
         }
 
-        .package-features li:last-child {
-            border-bottom: none;
-        }
-
-        .package-card.premium {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(99, 102, 241, 0.15));
-            border: 1px solid var(--primary);
-        }
-
-        .package-card.recommended {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(99, 102, 241, 0.2));
-            border: 1px solid var(--primary);
-        }
-
-        .package-card.recommended::before {
-            background: var(--gradient);
-        }
-
-        .badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--gradient);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
-        }
-
-        .badge.secondary {
-            background: var(--gradient-secondary);
-            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
-        }
-
-        .badge.vps {
-            background: var(--gradient-vps);
-            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
-        }
-
-        /* VPS Section */
-        .vps {
-            padding: 100px 0;
-            background-color: rgba(15, 15, 35, 0.7);
-            position: relative;
-            z-index: 2;
-        }
-
-        .vps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .vps-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .vps-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-vps);
-        }
-
-        .vps-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
-            border-color: rgba(16, 185, 129, 0.5);
-        }
-
-        .vps-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--light);
-        }
-
-        .vps-price {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: var(--gradient-vps);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .vps-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .vps-features li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .hero-content {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .vps-features li:last-child {
-            border-bottom: none;
-        }
-
-        /* Bot Rental Section */
-        .bot-rental {
-            padding: 100px 0;
-            background-color: rgba(15, 15, 35, 0.5);
-            position: relative;
-            z-index: 2;
-        }
-
-        .bot-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .bot-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
-            border: 1px solid var(--card-border);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .bot-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-secondary);
-        }
-
-        .bot-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2);
-            border-color: rgba(245, 158, 11, 0.5);
-        }
-
-        .bot-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--light);
-        }
-
-        .bot-price {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: var(--gradient-secondary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .bot-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .bot-features li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .bot-features li:last-child {
-            border-bottom: none;
-        }
-
-        .bot-card.recommended {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(249, 115, 22, 0.15));
-            border: 1px solid var(--secondary);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 100px 0;
-            background-color: rgba(15, 15, 35, 0.7);
-            position: relative;
-            z-index: 2;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            text-align: center;
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: 15px;
-            transition: all 0.3s;
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(10px);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.2);
-            border-color: rgba(139, 92, 246, 0.5);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Payment Section */
-        .payment {
-            padding: 80px 0;
-            background-color: rgba(15, 15, 35, 0.5);
-            position: relative;
-            z-index: 2;
-        }
-
-        .payment-methods {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
             flex-wrap: wrap;
+            gap: 3rem;
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: flex-end; /* Foto di kanan pada desktop */
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid var(--primary-color);
+            box-shadow: var(--shadow-hover);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05) rotate(3deg);
+            box-shadow: 0 20px 50px rgba(138, 43, 226, 0.3);
+        }
+
+        .hero-buttons {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Tombol */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* About Section - DIPERBARUI untuk Desktop */
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .about-image img:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .skills {
+            margin-top: 4rem; /* Dipindahkan lebih ke bawah */
+        }
+
+        .skills h3 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .skills h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: var(--secondary-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 0;
+            background-color: rgba(138, 43, 226, 0.03);
+            border-radius: var(--border-radius);
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
             margin-top: 2rem;
         }
 
-        .payment-method {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            background: var(--card-bg);
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
             padding: 1.5rem;
-            border-radius: 15px;
-            transition: transform 0.3s;
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(10px);
-            min-width: 150px;
         }
 
-        .payment-method:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
         }
 
-        .payment-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .price {
+            font-weight: bold;
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Contact Section - DIPERBARUI untuk Desktop */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: space-between;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--secondary-color);
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
+        }
+
+        .contact-details {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+        }
+
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover i {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
         }
 
         /* Footer */
         footer {
-            background: rgba(15, 15, 35, 0.9);
+            background-color: var(--dark-color);
+            color: var(--text-light);
             padding: 3rem 0;
             text-align: center;
-            border-top: 1px solid rgba(139, 92, 246, 0.2);
-            position: relative;
-            z-index: 2;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
 
         .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: var(--card-bg);
-            color: var(--light);
-            border-radius: 50%;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            border: 1px solid var(--card-border);
+            color: white;
+            font-size: 1.3rem;
+            transition: var(--transition);
         }
 
         .social-links a:hover {
-            background: var(--gradient);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
         }
 
         .copyright {
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-top: 1rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-
+        /* Animasi scroll */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.6s ease;
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .fade-in.visible {
@@ -690,775 +635,867 @@
             transform: translateY(0);
         }
 
-        /* Hero Button Container */
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+        /* Efek klik profesional */
+        .click-effect {
+            animation: clickPulse 0.3s ease;
         }
 
-        /* Recommended Logo */
-        .recommended-logo {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: var(--gradient);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
+        @keyframes clickPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
         }
 
-        /* Video Controls */
-        .video-controls {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            z-index: 4;
-            display: flex;
-            gap: 10px;
+        /* Efek hover untuk elemen interaktif */
+        .interactive-element {
+            transition: var(--transition);
         }
 
-        .video-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(15, 15, 35, 0.8);
-            border: 1px solid rgba(139, 92, 246, 0.5);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
+        .interactive-element:hover {
+            transform: translateY(-3px);
         }
 
-        .video-btn:hover {
-            background: var(--primary);
-            transform: scale(1.1);
-        }
-
-        /* Navigation Update */
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        /* Responsive */
+        /* Responsive untuk mobile - DIPERBARUI */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
             .hero h1 {
                 font-size: 2.5rem;
-            }
-
-            .packages-grid, .vps-grid, .bot-grid, .features-grid {
-                grid-template-columns: 1fr;
+                text-align: center; /* Teks di tengah */
             }
             
-            .payment-methods {
-                flex-direction: column;
-                align-items: center;
+            .hero-subtitle {
+                font-size: 1.5rem;
+                text-align: center; /* Teks di tengah */
+            }
+            
+            .hero-description {
+                text-align: center; /* Teks di tengah */
+            }
+            
+            .hero-content {
+                flex-direction: column-reverse; /* Foto di bawah teks */
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                text-align: center; /* Semua teks di tengah */
+                width: 100%;
+            }
+            
+            .hero-image {
+                justify-content: center;
+                order: 2; /* Foto di bawah teks */
+                margin-top: 2rem;
+            }
+            
+            .hero-text {
+                order: 1; /* Teks di atas */
+            }
+            
+            .profile-img {
+                width: 200px;
+                height: 200px;
+            }
+            
+            section {
+                padding: 4rem 0;
             }
             
             .hero-buttons {
                 flex-direction: column;
-            }
-            
-            .hero-buttons .cta-button {
+                align-items: center;
                 justify-content: center;
             }
             
-            .section-title h2 {
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                margin-bottom: 1rem;
+            }
+            
+            .skills {
+                margin-top: 2rem; /* Untuk mobile, keahlian tetap di posisi normal */
+            }
+            
+            .contact-details {
+                margin-top: 2rem; /* Untuk mobile, contact details tetap di bawah */
+            }
+        }
+
+        /* Desktop layout - TIDAK DIUBAH */
+        @media (min-width: 769px) {
+            .hero-content {
+                flex-direction: row; /* Foto di kanan pada desktop */
+            }
+            
+            .hero-text {
+                flex: 1.2; /* Lebih banyak ruang untuk teks */
+                padding-right: 3rem; /* Jarak antara teks dan foto */
+                text-align: left; /* Teks di kiri untuk desktop */
+            }
+            
+            .hero-image {
+                flex: 0.8; /* Lebih sedikit ruang untuk foto */
+                justify-content: flex-end; /* Foto di kanan */
+            }
+            
+            .profile-img {
+                width: 320px;
+                height: 320px;
+            }
+            
+            /* Tentang Saya - foto di kanan, teks di kiri */
+            .about-content {
+                flex-direction: row-reverse; /* Foto di kanan, teks di kiri */
+            }
+            
+            .about-text {
+                padding-right: 0;
+            }
+            
+            .about-image {
+                text-align: right;
+            }
+            
+            /* Kontak - form di kiri, info di kanan dan di bawah */
+            .contact-content {
+                flex-direction: column; /* Untuk desktop, ubah ke kolom */
+            }
+            
+            .contact-form {
+                width: 100%;
+            }
+            
+            .contact-details {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 1.5rem;
+                margin-top: 3rem;
+                width: 100%;
+            }
+            
+            .contact-item {
+                flex: 1;
+                min-width: 220px;
+                justify-content: flex-start;
+            }
+        }
+
+        /* Large desktop layout */
+        @media (min-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero-subtitle {
                 font-size: 2rem;
             }
             
-            .video-controls {
-                bottom: 10px;
-                right: 10px;
+            .profile-img {
+                width: 350px;
+                height: 350px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header dan Navigasi -->
     <header>
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <i class="fas fa-bolt"></i>
-                    <span>HADZXYZ STORE</span>
-                </div>
-                <div class="nav-links">
-                    <a href="#home">Home</a>
-                    <a href="#packages">Panel</a>
-                    <a href="#vps">VPS</a>
-                    <a href="#bot-rental">Sewa Bot</a>
-                    <a href="#bot-script">Script Bot</a>
-                    <a href="#features">Fitur</a>
-                    <a href="#payment">Pembayaran</a>
-                    <a href="#contact">Kontak</a>
-                </div>
-            </nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>Portofolio | KAA707</span>
+            </div>
+            
+            <!-- Menu titik tiga -->
+            <div class="menu-toggle" id="menuToggle">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            
+            <!-- Dropdown Menu -->
+            <div class="dropdown-menu" id="dropdownMenu">
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li><a href="#about"><i class="fas fa-user"></i> Tentang Saya</a></li>
+                    <li><a href="#projects"><i class="fas fa-project-diagram"></i> Project Saya</a></li>
+                    <li><a href="#products"><i class="fas fa-shopping-cart"></i> Penjualan</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Kontak</a></li>
+                </ul>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section dengan Video Background -->
-    <section class="hero" id="home">
-        <!-- Video Background -->
-        <div class="video-background">
-            <!-- 
-                GANTI LINK VIDEO DI BAWAH INI DENGAN VIDEO ANDA
-                Format video: MP4, WebM, atau OGG
-                Untuk efek transparan, gunakan video dengan latar belakang gelap atau efek partikel
-            -->
-            <video id="bg-video" autoplay muted loop playsinline preload="auto">
-                <source src="https://files.catbox.moe/mkroh5.mp4" type="video/mp4">
-                <!-- Fallback video alternatif jika video utama tidak bisa dimuat -->
-                <source src="https://files.catbox.moe/mkroh5.mp4" type="video/mp4">
-                <!-- Fallback jika browser tidak support video -->
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-overlay"></div>
-        </div>
-        
-        <!-- Animated Particles -->
-        <div class="particles" id="particles"></div>
-        
-        <!-- Video Controls -->
-        <div class="video-controls">
-            <button class="video-btn" id="mute-btn">
-                <i class="fas fa-volume-up"></i>
-            </button>
-            <button class="video-btn" id="pause-btn">
-                <i class="fas fa-pause"></i>
-            </button>
-        </div>
-        
-        <!-- Hero Content -->
+    <!-- Hero Section - DIPERBARUI -->
+    <section id="home" class="hero fade-in">
         <div class="container">
             <div class="hero-content">
-                <h1>Kebutuhan Hosting </h1>
-                <p>Nikmati pengalaman terbaik dengan panel hosting modern, VPS berkualitas tinggi, dan bot canggih. Server stabil 24/7 dengan performa maksimal dan harga terjangkau.</p>
-                <div class="hero-buttons">
-                    <a href="#packages" class="cta-button"><i class="fas fa-server"></i> Panel Hosting</a>
-                    <a href="#vps" class="cta-button"><i class="fas fa-cloud"></i> Virtual Private Server</a>
-                    <a href="#bot-rental" class="cta-button secondary"><i class="fas fa-robot"></i> Sewa bot</a>
-                    <a href="#bot-script" class="cta-button secondary"><i class="fas fa-robot"></i> Script Bot</a>
+                <div class="hero-text">
+                    <h1>Halo, Saya <span>Alwayshadzxyz</span></h1>
+                    <div class="hero-subtitle">Cretator Script Bot</div>
+                    <p class="hero-description">Spesialis dalam pengembangan script berbasis javascript dengan fokus pada performa, dan pengalaman pengguna yang luar biasa.</p>
+                    <div class="hero-buttons">
+                        <a href="#about" class="btn interactive-element">Tentang Saya</a>
+                        <a href="#contact" class="btn btn-secondary interactive-element">Hubungi Saya</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="anime1.jpg" 
+                         alt="Foto Profil" 
+                         class="profile-img interactive-element">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Packages Section -->
-    <section class="packages" id="packages">
+    <!-- About Section - DIPERBARUI -->
+    <section id="about" class="about fade-in">
         <div class="container">
-            <div class="section-title">
-                <h2>Panel Pterodactyl</h2>
-                <p>Pilih paket panel hosting yang sesuai dengan kebutuhan Anda</p>
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Saya adalah seorang Pelajar dari SMP NEGRI 1 PEDES yang ingin berkembang di bidang digital marketplace dan web developer, saya sedang belajar dan saya sedikit ngerti soal web developer.</p>
+                    <p>Saya ahli dalam HTML, CSS, JavaScript, Node.js, dan berbagai teknologi web atau script modern. Saya selalu mengikuti perkembangan terbaru dalam dunia teknologi untuk memberikan solusi terbaik kepada klien.</p>
+                    <p>Pendekatan saya dalam setiap proyek adalah menggabungkan estetika visual dengan fungsionalitas teknis yang solid untuk menciptakan produk digital yang tidak hanya menarik secara visual tetapi juga kokoh secara teknis.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+                         alt="Bekerja di Kantor" 
+                         class="interactive-element">
+                </div>
             </div>
-            <div class="packages-grid">
-                <!-- Package 1GB -->
-                <div class="package-card fade-in">
-                    <div class="package-name">2GB PAKET 1</div>
-                    <div class="package-price">Rp 2,5K/bulan</div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-memory"></i> 2GB RAM</li>
-                        <li><i class="fas fa-hdd"></i> 2GB Disk</li>
-                        <li><i class="fas fa-microchip"></i> 60% CPU</li>
-                        <li><i class="fas fa-shield-alt"></i> Garansi 10 Hari</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=HALO%20KAK%20HADZXYZ%20,AKU%20INGIN%20BELI%20PANEL%202GB%20PAKET1" class="cta-button"><i class="fab fa-telegram"></i> ORDER NOW</a>
-                </div>
-
-                <!-- Package 2GB -->
-                <div class="package-card fade-in">
-                    <div class="package-name">3GB PAKET 2</div>
-                    <div class="package-price">Rp 3,5K/bulan</div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-memory"></i> 3GB RAM</li>
-                        <li><i class="fas fa-hdd"></i> 3GB Disk</li>
-                        <li><i class="fas fa-microchip"></i> 90% CPU</li>
-                        <li><i class="fas fa-shield-alt"></i> Garansi 15 Hari</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?HALO%20KAK%20HADZXYZ%20,AKU%20INGIN%20BELI%20PANEL%203GB%20PAKET2%" class="cta-button"><i class="fab fa-telegram"></i> ORDER NOW</a>
-                </div>
-
-                <!-- Package 3GB -->
-                <div class="package-card fade-in">
-                    <div class="package-name">4GB PAKET 3</div>
-                    <div class="package-price">Rp 4,5K/bulan</div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-memory"></i> 4GB RAM</li>
-                        <li><i class="fas fa-hdd"></i> 5GB Disk</li>
-                        <li><i class="fas fa-microchip"></i> 150% CPU</li>
-                        <li><i class="fas fa-shield-alt"></i> Garansi 20 Hari</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=HALO%20KAK%20HADZXYZ%20,AKU%20INGIN%20BELI%20PANEL%204GB%20PAKET3" class="cta-button"><i class="fab fa-telegram"></i> ORDER NOW</a>
-                </div>
-
-                <!-- Package 4GB -->
-                <div class="package-card fade-in recommended">
-                    <div class="recommended-logo">
-                        <i class="fas fa-star"></i> Recommended You
+            
+            <!-- Keahlian dipindahkan ke bawah pada desktop -->
+            <div class="skills">
+                <h3>Keahlian Saya</h3>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Pengembangan Web</span>
+                        <span>65%</span>
                     </div>
-                    <div class="package-name">5GB PAKET 4</div>
-                    <div class="package-price">Rp 6K/bulan</div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-memory"></i> 5GB RAM</li>
-                        <li><i class="fas fa-hdd"></i> 6GB Disk</li>
-                        <li><i class="fas fa-microchip"></i> 250% CPU</li>
-                        <li><i class="fas fa-shield-alt"></i> Garansi 25 Hari</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=HALO%20KAK%20HADZXYZ%20,AKU%20INGIN%20BELI%20PANEL%205GB%20PAKET4" class="cta-button"><i class="fab fa-telegram"></i> ORDER NOW</a>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-level="65"></div>
+                    </div>
                 </div>
-
-                <!-- Package 5GB -->
-                <div class="package-card fade-in">
-                    <div class="package-name">6GB PAKET 5</div>
-                    <div class="package-price">Rp 7K/bulan</div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-memory"></i> 6GB RAM</li>
-                        <li><i class="fas fa-hdd"></i> 7GB Disk</li>
-                        <li><i class="fas fa-microchip"></i> 300% CPU</li>
-                        <li><i class="fas fa-shield-alt"></i> Garansi 30 Hari</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=HALO%20KAK%20HADZXYZ%20,AKU%20INGIN%20BELI%20PANEL%206GB%20PAKET5" class="cta-button"><i class="fab fa-telegram"></i> ORDER NOW</a>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>UI/UX Design</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-level="85"></div>
+                    </div>
                 </div>
-                <!-- Package 6GB -->
-                <div class="package-card fade-in">
-                    <div class="package-name">7GB PAKET 6</div>
-                    <div class="package-price">Rp 8K/bulan</div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-memory"></i> 7GB RAM</li>
-                        <li><i class="fas fa-hdd"></i> 8GB Disk</li>
-                        <li><i class="fas fa-microchip"></i> 350% CPU</li>
-                        <li><i class="fas fa-shield-alt"></i> Garansi 30 Hari</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=HALO%20KAK%20HADZXYZ%20,AKU%20INGIN%20BELI%20PANEL%207GB%20PAKET6" class="cta-button"><i class="fab fa-telegram"></i> ORDER NOW</a>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>JavaScript & Framework</span>
+                        <span>55%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-level="55"></div>
+                    </div>
                 </div>
-
-                <!-- Package 7GB -->
-                <div class="package-card fade-in">
-                    <div class="package-name">8GB PAKET 7</div>
-                    <div class="package-price">Rp 9K/bulan</div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-memory"></i> 8GB RAM</li>
-                        <li><i class="fas fa-hdd"></i> 9GB Disk</li>
-                        <li><i class="fas fa-microchip"></i> 400% CPU</li>
-                        <li><i class="fas fa-shield-alt"></i> Garansi 30 Hari</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=HALO%20KAK%20HADZXYZ%20,AKU%20INGIN%20BELI%20PANEL%208GB%20PAKET7" class="cta-button"><i class="fab fa-telegram"></i> ORDER NOW</a>
-                </div>
-
-                <!-- Package Premium -->
-                <div class="package-card premium fade-in">
-                    <div class="badge">TERBAIK</div>
-                    <div class="package-name">PANEL PREMIUM</div>
-                    <div class="package-price">Rp 15K/bulan</div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-memory"></i> RAM Unlimited</li>
-                        <li><i class="fas fa-hdd"></i>Disk Unlimited</li>
-                        <li><i class="fas fa-microchip"></i> CPU Unlimited</li>
-                        <li><i class="fas fa-shield-alt"></i> Garansi 30 Hari</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=HALO%20KAK%20HADZXYZ%20,AKU%20INGIN%20BELI%20PANEL%20PAKET%20PREMIUM" class="cta-button"><i class="fab fa-telegram"></i> ORDER NOW</a>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Backend Development</span>
+                        <span>10%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-level="10"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- VPS Section -->
-    <section class="vps" id="vps">
+    <!-- Projects Section -->
+    <section id="projects" class="projects fade-in">
         <div class="container">
-            <div class="section-title">
-                <h2 style="background: var(--gradient-vps); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                    Virtual Private Server
-                </h2>
-                <p>VPS berkualitas tinggi dengan performa optimal untuk kebutuhan server Anda</p>
+            <h2 class="section-title">Project Saya</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Berikut adalah beberapa proyek script bug yang telah saya selesaikan dengan performa terbaik untuk buyer</p>
+            
+            <div class="projects-grid">
+                <div class="project-card interactive-element">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                         alt="Script KairoVexsar" 
+                         class="project-img">
+                    <div class="project-info">
+                        <h3>Script KairoVexsar V1</h3>
+                        <p>Script bot KairoVexsar V1 memiliki fitur yang lumayan dilengkapi dengan database aksess, kegunaan script ini adalah untuk membantai orang yang punya salah ( bukan yang tidak bersalah )</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">database</span>
+                            <span class="tech-tag">index.js</span>
+                            <span class="tech-tag">package.json</span>
+                            <span class="tech-tag">node.js</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card interactive-element">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+                         alt="Task Management App" 
+                         class="project-img">
+                    <div class="project-info">
+                        <h3>Script-Md WhatsApp</h3>
+                        <p>Script via WhatsApp ini bertugas untuk membantu anda dengan fitur yang banyak , bisa juga untuk jaga grup atau protect group dengan bantuan bot WhatsApp</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Database</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Package.json</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card interactive-element">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+                         alt="Script Website Store" 
+                         class="project-img">
+                    <div class="project-info">
+                        <h3></h3>
+                        <p>Script ini hanya menggunakan html jadi mudah untuk kalian yang hanya belajar di html, bisa dideploy dengan vercel maupun hostinger manapun.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Index</span>
+                            <span class="tech-tag">Html</span>
+                            <span class="tech-tag">Bebas Rename</span>
+                            <span class="tech-tag">Anti Decrypt</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="vps-grid">
-                <!-- VPS 1: RAM 4 CORE 2 -->
-                <div class="vps-card fade-in">
-                    <div class="vps-name">VPS Basic</div>
-                    <div class="vps-price">Rp 25K/bulan</div>
-                    <ul class="vps-features">
-                        <li><i class="fas fa-memory"></i> RAM 4 GB</li>
-                        <li><i class="fas fa-microchip"></i> 2 Core CPU</li>
-                        <li><i class="fas fa-hdd"></i> 30 GB SSD</li>
-                        <li><i class="fas fa-broadcast-tower"></i> 1 Gbps Network</li>
-                        <li><i class="fas fa-shield-alt"></i> Full Root Access</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=Halo,%20kak%20saya%20mau%20order%20VPS%20Basic%20(RAM%204%20Core%202)" class="cta-button"><i class="fab fa-telegram"></i> ORDER NOW</a>
-                </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#contact" class="btn interactive-element">Hubungi Jika Berminat Menjadi Partner</a>
+            </div>
+        </div>
+    </section>
 
-                <!-- VPS 2: RAM 8 CORE 4 -->
-                <div class="vps-card fade-in">
-                    <div class="badge">POPULER</div>
-                    <div class="vps-name">VPS Standard</div>
-                    <div class="vps-price">Rp 35K/bulan</div>
-                    <ul class="vps-features">
-                        <li><i class="fas fa-memory"></i> RAM 8 GB</li>
-                        <li><i class="fas fa-microchip"></i> 4 Core CPU</li>
-                        <li><i class="fas fa-hdd"></i> 50 GB SSD</li>
-                        <li><i class="fas fa-broadcast-tower"></i> 1 Gbps Network</li>
-                        <li><i class="fas fa-shield-alt"></i> Full Root Access</li>
-                    </ul>
-                   <a href="https://t.me/mianomohaal?text=Halo,%20kak%20saya%20mau%20order%20VPS%20sStandart%20(RAM%208%20Core%204)" class="cta-button"><i class="fab fa-telegram"></i> ORDER NOW</a>
+    <!-- Products Section -->
+    <section id="products" class="products fade-in">
+        <div class="container">
+            <h2 class="section-title">Produk & Layanan</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Saya menawarkan berbagai produk dan layanan pengembangan web yang dapat membantu bisnis Anda tumbuh di era digital dan kebutuhan hosting lainnya.</p>
+            
+            <div class="products-grid">
+                <div class="product-card interactive-element">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Website Development" class="product-img">
+                    <div class="product-info">
+                        <h3>Script KairoVexsar</h3>
+                        <p>Script Ini adalah project saya , jika anda berminat silahkan hubungi saya</p>
+                        <div class="price">Rp 25.000 - 50.000</div>
+                        <a href="#contact" class="btn interactive-element">Order Now</a>
+                    </div>
                 </div>
-
-                <!-- VPS 3: RAM 16 CORE 4 -->
-                <div class="vps-card fade-in">
-                    <div class="vps-name">VPS Advanced</div>
-                    <div class="vps-price">Rp 50K/bulan</div>
-                    <ul class="vps-features">
-                        <li><i class="fas fa-memory"></i> RAM 16 GB</li>
-                        <li><i class="fas fa-microchip"></i> 4 Core CPU</li>
-                        <li><i class="fas fa-hdd"></i> 80 GB SSD</li>
-                        <li><i class="fas fa-broadcast-tower"></i> 1 Gbps Network</li>
-                        <li><i class="fas fa-shield-alt"></i> Full Root Access</li>
-                        <li><i class="fas fa-rocket"></i> Priority Support</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=Halo,%20kak%20saya%20mau%20order%20VPS%20Advanced%20(RAM%2016%20Core%204)" class="cta-button"><i class="fab fa-telegram"></i> ORDER NOW</a>
+                
+                <div class="product-card interactive-element">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="E-commerce Solution" class="product-img">
+                    <div class="product-info">
+                        <h3>Script Multi-Device</h3>
+                        <p>Script ini memiliki banyak fitur dan total fitur yang dimiliki 1000+, hubungi saya jika berminat.</p>
+                        <div class="price">Rp 30.000 - 40.000</div>
+                        <a href="#contact" class="btn interactive-element">Order Now</a>
+                    </div>
                 </div>
-
-                <!-- VPS 4: RAM 16 CORE 8 -->
-                <div class="vps-card fade-in">
-                    <div class="badge">TERBAIK</div>
-                    <div class="vps-name">VPS Premium</div>
-                    <div class="vps-price">Rp 60K/bulan</div>
-                    <ul class="vps-features">
-                        <li><i class="fas fa-memory"></i> RAM 16 GB</li>
-                        <li><i class="fas fa-microchip"></i> 8 Core CPU</li>
-                        <li><i class="fas fa-hdd"></i> 100 GB SSD</li>
-                        <li><i class="fas fa-broadcast-tower"></i> 1 Gbps Network</li>
-                        <li><i class="fas fa-shield-alt"></i> Full Root Access</li>
-                        <li><i class="fas fa-rocket"></i> Priority Support</li>
-                        <li><i class="fas fa-infinity"></i> Backup Harian</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=Halo,%20kak%20saya%20mau%20order%20VPS%20Premium%20(RAM%2016%20Core%208)" class="cta-button"><i class="fab fa-telegram"></i> ORDER NOW</a>
+                
+                <div class="product-card interactive-element">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Mobile App Development" class="product-img">
+                    <div class="product-info">
+                        <h3>Website Store</h3>
+                        <p>Website untuk membantu anda mempermudah dalam menjalankan bisnis anda, dan tidak perlu ribet karna script ini terdiri dengan html.</p>
+                        <div class="price">Rp 45.000 - Rp 75.000</div>
+                        <a href="#contact" class="btn interactive-element">Order Now</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Bot sewa Section -->
-    <section class="bot-rental" id="bot-rental">
+    <!-- Contact Section - DIPERBARUI -->
+    <section id="contact" class="contact fade-in">
         <div class="container">
-            <div class="section-title">
-                <h2>Sewa Bot</h2>
-                <p>Nikmati berbagai fitur premium dengan bot berkualitas</p>
-            </div>
-            <div class="bot-grid">
-                <!-- Bot 15 Hari -->
-                <div class="bot-card fade-in">
-                    <div class="bot-name">15 Hari</div>
-                    <div class="bot-price">Rp 5.000</div>
-                    <ul class="bot-features">
-                        <li><i class="fas fa-robot"></i> Bisa Invite Bot ke Grup</li>
-                        <li><i class="fas fa-crown"></i> Akses Premium Fitur</li>
-                        <li><i class="fas fa-clock"></i> Online 24 Jam</li>
-                        <li><i class="fas fa-bolt"></i> Anti Delay / Error</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=Halo,%20kak%20saya%20mau%20sewa%20bot%2015%20hari" class="cta-button secondary"><i class="fab fa-telegram"></i> ORDER NOW</a>
+            <h2 class="section-title">Hubungi Saya</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Saya siap membantu keperluan anda dalam 24/7!</p>
+            
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nama Lengkap" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subjek" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" placeholder="Pesan Anda" required></textarea>
+                        </div>
+                        <button type="submit" class="btn interactive-element">Kirim Pesan</button>
+                    </form>
                 </div>
-
-                <!-- Bot 1 Bulan -->
-                <div class="bot-card fade-in recommended">
-                    <div class="badge secondary">REKOMENDASI</div>
-                    <div class="bot-name">1 Bulan</div>
-                    <div class="bot-price">Rp 15.000</div>
-                    <ul class="bot-features">
-                        <li><i class="fas fa-robot"></i> Bisa Invite Bot ke Grup</li>
-                        <li><i class="fas fa-crown"></i> Akses Premium Fitur</li>
-                        <li><i class="fas fa-clock"></i> Online 24 Jam</li>
-                        <li><i class="fas fa-bolt"></i> Anti Delay / Error</li>
-                        <li><i class="fas fa-plus"></i> Fitur terus bertambah</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=Halo,%20kak%saya%20mau%20sewa%20bot%201%20bulan" class="cta-button secondary"><i class="fab fa-telegram"></i> ORDER NOW</a>
-                </div>
-
-                <!-- Bot 2 Bulan -->
-                <div class="bot-card fade-in">
-                    <div class="bot-name">2 Bulan</div>
-                    <div class="bot-price">Rp 30.000</div>
-                    <ul class="bot-features">
-                        <li><i class="fas fa-robot"></i> Bisa Invite Bot ke Grup</li>
-                        <li><i class="fas fa-crown"></i> Akses Premium Fitur</li>
-                        <li><i class="fas fa-clock"></i> Online 24 Jam</li>
-                        <li><i class="fas fa-bolt"></i> Anti Delay / Error</li>
-                        <li><i class="fas fa-plus"></i> Fitur terus bertambah</li>
-                        <li><i class="fas fa-shield-alt"></i> Fitur jaga grup lengkap</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=Halo,%20kak%20saya%20mau%20sewa%20bot%202%20bulan" class="cta-button secondary"><i class="fab fa-telegram"></i> ORDER NOW</a>
-                </div>
-
-                <!-- Bot Permanen -->
-                <div class="bot-card fade-in">
-                    <div class="badge secondary">TERBAIK</div>
-                    <div class="bot-name">1 tahun</div>
-                    <div class="bot-price">Rp 120.000</div>
-                    <ul class="bot-features">
-                        <li><i class="fas fa-robot"></i> Bisa Invite Bot ke Grup</li>
-                        <li><i class="fas fa-crown"></i> Akses Premium Fitur</li>
-                        <li><i class="fas fa-clock"></i> Online 24 Jam</li>
-                        <li><i class="fas fa-bolt"></i> Anti Delay / Error</li>
-                        <li><i class="fas fa-plus"></i> Fitur terus bertambah</li>
-                        <li><i class="fas fa-shield-alt"></i> Fitur jaga grup lengkap</li>
-                        <li><i class="fas fa-infinity"></i> Akses seumur hidup</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=Halo,%20kak%20saya%20mau%20sewa%20bot%20permanen" class="cta-button secondary"><i class="fab fa-telegram"></i> ORDER NOW</a>
+                
+                <!-- Contact details dipindahkan ke bawah pada desktop -->
+                <div class="contact-details">
+                    <div class="contact-item interactive-element">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Lokasi</h3>
+                            <p>JawaBarat, Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="contact-item interactive-element">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Telepon</h3>
+                            <p>+62 857 1022 2166</p>
+                        </div>
+                    </div>
+                    <div class="contact-item interactive-element">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>hadzzokeyy@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item interactive-element">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Jam Kerja</h3>
+                            <p>Senin - Minggu: 9:00 - 00:00</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-     <section class="bot-script" id="bot-script">
-        <div class="container">
-            <div class="section-title">
-                <h2>Script Bot</h2>
-                <p>Nikmati berbagai script dengn fitur langka dan anti pasaran</p>
-            </div>
-             <div class="bot-grid">
-                 <!-- List script bot -->
-                 <div class="bot-card fade-in">
-                    <div class="bot-name">Script bot md</div>
-                    <div class="bot-price">Rp 25.000</div>
-                    <ul class="bot-features">
-                        <li><i class="fas fa-robot"></i> Feture 1000+</li>
-                        <li><i class="fas fa-crown"></i> No enc 100%</li>
-                        <li><i class="fas fa-clock"></i> All feature works</li>
-                        <li><i class="fas fa-bolt"></i> Free updte</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=Halo,%20kak%20saya%20Ingin%20Order%20Script%20bot%20md" class="cta-button secondary"><i class="fab fa-telegram"></i> Pesan Sekarang</a>
-                </div>
-
-                  <div class="bot-card fade-in">
-                    <div class="bot-name">Script bot bug</div>
-                    <div class="bot-price">Rp 25.000</div>
-                    <ul class="bot-features">
-                        <li><i class="fas fa-robot"></i> Feture 250+</li>
-                        <li><i class="fas fa-crown"></i> No enc 100%</li>
-                        <li><i class="fas fa-clock"></i> All feature works</li>
-                        <li><i class="fas fa-bolt"></i> Free updte</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=Halo,%20kak%20saya%20Ingin%20Order%20Script%20bot%20bug" class="cta-button secondary"><i class="fab fa-telegram"></i> Pesan Sekarang</a>
-                </div>
-
-                 <div class="bot-card fade-in">
-                    <div class="bot-name">Script bot cpnel</div>
-                    <div class="bot-price">Rp 15.000</div>
-                    <ul class="bot-features">
-                        <li><i class="fas fa-robot"></i> Feture 100+</li>
-                        <li><i class="fas fa-crown"></i> No enc 100%</li>
-                        <li><i class="fas fa-clock"></i> Crate panel otomatis</li>
-                        <li><i class="fas fa-bolt"></i> Free updte</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=Halo,%20kak%20saya%20Ingin%20Order%20Script%20bot%20cpanel" class="cta-button secondary"><i class="fab fa-telegram"></i> Pesan Sekarang</a>
-                </div>
-
-                  <div class="bot-card fade-in">
-                    <div class="badge secondary">TERBAIK</div>
-                    <div class="bot-name">Script bot bug tele</div>
-                    <div class="bot-price">Rp 30.000</div>
-                    <ul class="bot-features">
-                        <li><i class="fas fa-robot"></i> Feture 100+</li>
-                        <li><i class="fas fa-crown"></i> No enc 100%</li>
-                        <li><i class="fas fa-clock"></i> All feature works</li>
-                        <li><i class="fas fa-bolt"></i> Free updte</li>
-                    </ul>
-                    <a href="https://t.me/mianomohaal?text=Halo,%20kak%20saya%20Ingin%20Order%20Script%20bot%20bug%20tele" class="cta-button secondary"><i class="fab fa-telegram"></i> Pesan Sekarang</a>
-                </div>
-             </div>
-        </div>
-     </section>
-    
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Kelebihan Layanan</h2>
-                <p>Mengapa memilih Hadzxyz Store?</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Server Stabil 24/7</h3>
-                    <p>Uptime 99.9% dengan performa tinggi dan kecepatan optimal</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>VPS Legal</h3>
-                    <p>Menggunakan infrastruktur VPS legal dan terpercaya</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-medal"></i>
-                    </div>
-                    <h3>Garansi 30 Hari</h3>
-                    <p>Garansi penuh 30 hari untuk kenyamanan Anda</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3>Bisa Diperpanjang</h3>
-                    <p>Fleksibel dalam memperpanjang layanan kapan saja</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Bot Berkualitas</h3>
-                    <p>Bot dengan fitur lengkap dan performa optimal</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>Support 24/7</h3>
-                    <p>Tim support siap membantu kapan saja</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Payment Section -->
-    <section class="payment" id="payment">
-        <div class="container">
-            <div class="section-title">
-                <h2>Metode Pembayaran</h2>
-                <p>Berbagai metode pembayaran yang tersedia</p>
-            </div>
-            <div class="payment-methods">
-                <div class="payment-method fade-in">
-                    <div class="payment-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <span>Costumer Service</span>
-                    <small>62 838-7699-9143</small>
-                </div>
-                <div class="payment-method fade-in">
-                    <div class="payment-icon">
-                        <i class="fas fa-qrcode"></i>
-                    </div>
-                    <span>QRIS</span>
-                    <small>Semua E-Wallet</small>
-                </div>
-                <div class="payment-method fade-in">
-                    <div class="payment-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <span>E-Wallet</span>
-                    <small>Dana, OVO, GoPay</small>
-                </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#home" class="btn btn-secondary interactive-element">Kembali ke Beranda</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="logo" style="justify-content: center; margin-bottom: 1.5rem;">
-                <i class="fas fa-bolt"></i>
-                <span>HADZXYZ STORE</span>
+    <footer>
+        <div class="footer-content">
+            <div class="logo" style="justify-content: center; color: white; margin-bottom: 1rem;">
+                <i class="fas fa-code"></i>
+                <span>Portofolio | Alwayshadzxyz</span>
             </div>
+            <p>Mari berkolaborasi untuk menciptakan solusi digital yang luar biasa!</p>
+            
             <div class="social-links">
-                <a href="https://wa.me/6283876999143" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://t.me/mianomohaal" target="_blank"><i class="fab fa-telegram"></i></a>
-                <a href="https://instagram.com/@15.clay.xo_" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://youtube.com/@alwayshadzxyz" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="interactive-element"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="interactive-element"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="interactive-element"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="interactive-element"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="interactive-element"><i class="fab fa-github"></i></a>
             </div>
-            <p class="copyright">© 2024 Hadzxyz Store. All rights reserved.</p>
-            <p class="copyright" style="margin-top: 0.5rem; font-size: 0.8rem;">Panel Hosting • Virtual Private Server • Sewa Bot • Script bot</p>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Alwayshadzxyz. Semua hak dilindungi.</p>
+                <p>Dibuat dengan tema HyperOS Xiaomi</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Inisialisasi partikel animasi
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Ukuran acak antara 2px dan 6px
-                const size = Math.random() * 4 + 2;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Posisi acak
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                
-                // Warna acak (ungu, oranye, atau hijau)
-                const colors = [
-                    'rgba(139, 92, 246, 0.5)',
-                    'rgba(165, 180, 252, 0.4)',
-                    'rgba(245, 158, 11, 0.5)',
-                    'rgba(251, 191, 36, 0.4)',
-                    'rgba(16, 185, 129, 0.5)',
-                    'rgba(52, 211, 153, 0.4)'
-                ];
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.background = color;
-                
-                // Animasi
-                const duration = Math.random() * 20 + 10;
-                const delay = Math.random() * 5;
-                particle.style.animation = `pulse ${duration}s infinite ${delay}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Kontrol video
-        const video = document.getElementById('bg-video');
-        const muteBtn = document.getElementById('mute-btn');
-        const pauseBtn = document.getElementById('pause-btn');
+        // Menu titik tiga toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const dropdownMenu = document.getElementById('dropdownMenu');
         
-        // Mute/unmute video
-        muteBtn.addEventListener('click', () => {
-            if (video.muted) {
-                video.muted = false;
-                muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
-            } else {
-                video.muted = true;
-                muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
-            }
-        });
-        
-        // Play/pause video
-        pauseBtn.addEventListener('click', () => {
-            if (video.paused) {
-                video.play();
-                pauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            } else {
-                video.pause();
-                pauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-            }
-        });
-
-        // Fungsi untuk menangani error video
-        function handleVideoError() {
-            console.log('Video utama tidak dapat dimuat, mencoba fallback...');
-            // Ganti ke video fallback jika ada
-            const videoSources = video.querySelectorAll('source');
-            if (videoSources.length > 1) {
-                // Coba sumber video kedua
-                videoSources[0].style.display = 'none';
-                video.load(); // Muat ulang video dengan sumber baru
-                video.play().catch(e => {
-                    console.log('Fallback video juga tidak dapat dimuat:', e);
-                    // Jika fallback juga gagal, sembunyikan video background
-                    document.querySelector('.video-background').style.display = 'none';
-                });
-            } else {
-                // Jika hanya ada satu sumber, sembunyikan video background
-                document.querySelector('.video-background').style.display = 'none';
-            }
-        }
-
-        // Tambahkan event listener untuk error video
-        video.addEventListener('error', handleVideoError);
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Header background on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(15, 15, 35, 0.95)';
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
-            } else {
-                header.style.background = 'rgba(15, 15, 35, 0.9)';
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
-            }
-        });
-
-        // Add glow effect to cards on hover
-        document.querySelectorAll('.package-card, .vps-card, .bot-card, .feature-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                if (this.classList.contains('bot-card')) {
-                    this.style.boxShadow = '0 20px 40px rgba(245, 158, 11, 0.2)';
-                } else if (this.classList.contains('vps-card')) {
-                    this.style.boxShadow = '0 20px 40px rgba(16, 185, 129, 0.2)';
-                } else {
-                    this.style.boxShadow = '0 20px 40px rgba(139, 92, 246, 0.2)';
-                }
-            });
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('active');
             
-            card.addEventListener('mouseleave', function() {
-                this.style.boxShadow = '';
-            });
-        });
-
-        // Inisialisasi partikel saat halaman dimuat
-        window.addEventListener('DOMContentLoaded', () => {
-            createParticles();
+            // Rotasi tombol menu
+            if (dropdownMenu.classList.contains('active')) {
+                menuToggle.style.transform = 'rotate(90deg)';
+                menuToggle.classList.add('click-effect');
+            } else {
+                menuToggle.style.transform = 'rotate(0deg)';
+            }
             
-            // Coba putar video dengan timeout untuk menghindari autoplay block
             setTimeout(() => {
-                video.play().catch(e => {
-                    console.log('Autoplay diblokir, menunggu interaksi pengguna:', e);
-                    // Tampilkan pesan atau tombol untuk memutar video
-                });
-            }, 1000);
+                menuToggle.classList.remove('click-effect');
+            }, 300);
         });
-
-        // Coba putar video saat ada interaksi pengguna
-        document.addEventListener('click', function initVideo() {
-            video.play().then(() => {
-                console.log('Video berhasil diputar setelah interaksi pengguna');
-            }).catch(e => {
-                console.log('Video masih tidak dapat diputar:', e);
+        
+        // Tutup menu saat klik di luar
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = menuToggle.contains(event.target) || dropdownMenu.contains(event.target);
+            
+            if (!isClickInsideMenu && dropdownMenu.classList.contains('active')) {
+                dropdownMenu.classList.remove('active');
+                menuToggle.style.transform = 'rotate(0deg)';
+            }
+        });
+        
+        // Animasi scroll untuk elemen
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = function() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                    
+                    // Animate skill bars when they become visible
+                    if (element.id === 'about') {
+                        const skillLevels = document.querySelectorAll('.skill-level');
+                        skillLevels.forEach(level => {
+                            const levelWidth = level.getAttribute('data-level');
+                            level.style.width = levelWidth + '%';
+                        });
+                    }
+                }
             });
-            // Hapus event listener setelah dicoba
-            document.removeEventListener('click', initVideo);
+        };
+        
+        // Panggil saat halaman dimuat dan saat di-scroll
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+        
+        // Efek klik pada foto profil
+        const profileImg = document.querySelector('.profile-img');
+        profileImg.addEventListener('click', function() {
+            this.classList.add('click-effect');
+            
+            // Efek partikel sederhana
+            const particles = document.createElement('div');
+            particles.style.position = 'absolute';
+            particles.style.width = '100%';
+            particles.style.height = '100%';
+            particles.style.top = '0';
+            particles.style.left = '0';
+            particles.style.borderRadius = '50%';
+            particles.style.boxShadow = '0 0 30px 20px rgba(138, 43, 226, 0.3)';
+            particles.style.animation = 'fadeOut 0.5s forwards';
+            
+            // Tambahkan style untuk animasi
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeOut {
+                    0% { opacity: 1; transform: scale(1); }
+                    100% { opacity: 0; transform: scale(1.2); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            this.appendChild(particles);
+            
+            // Tampilkan pesan dengan efek profesional
+            setTimeout(() => {
+                const message = document.createElement('div');
+                message.textContent = "👋 Halo! Saya Alwayshadzxyz";
+                message.style.position = 'fixed';
+                message.style.top = '50%';
+                message.style.left = '50%';
+                message.style.transform = 'translate(-50%, -50%)';
+                message.style.backgroundColor = 'var(--primary-color)';
+                message.style.color = 'white';
+                message.style.padding = '1rem 2rem';
+                message.style.borderRadius = 'var(--border-radius)';
+                message.style.zIndex = '10000';
+                message.style.boxShadow = 'var(--shadow-hover)';
+                message.style.animation = 'slideIn 0.3s ease';
+                
+                // Tambahkan style untuk animasi slideIn
+                const style2 = document.createElement('style');
+                style2.textContent = `
+                    @keyframes slideIn {
+                        0% { opacity: 0; transform: translate(-50%, -60%); }
+                        100% { opacity: 1; transform: translate(-50%, -50%); }
+                    }
+                    @keyframes slideOut {
+                        0% { opacity: 1; transform: translate(-50%, -50%); }
+                        100% { opacity: 0; transform: translate(-50%, -40%); }
+                    }
+                `;
+                document.head.appendChild(style2);
+                
+                document.body.appendChild(message);
+                
+                // Hapus pesan setelah 2 detik
+                setTimeout(() => {
+                    message.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => {
+                        document.body.removeChild(message);
+                    }, 300);
+                }, 2000);
+            }, 300);
+            
+            // Hapus partikel setelah animasi
+            setTimeout(() => {
+                if (particles.parentNode === this) {
+                    this.removeChild(particles);
+                }
+                this.classList.remove('click-effect');
+            }, 500);
+        });
+        
+        // Efek klik profesional pada semua elemen interaktif
+        const interactiveElements = document.querySelectorAll('.interactive-element');
+        interactiveElements.forEach(element => {
+            element.addEventListener('click', function(e) {
+                if (this.tagName === 'A' && this.getAttribute('href')?.startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        // Efek klik
+                        this.classList.add('click-effect');
+                        setTimeout(() => {
+                            this.classList.remove('click-effect');
+                        }, 300);
+                        
+                        // Smooth scroll ke target
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                } else {
+                    // Efek klik biasa
+                    this.classList.add('click-effect');
+                    setTimeout(() => {
+                        this.classList.remove('click-effect');
+                    }, 300);
+                }
+            });
+        });
+        
+        // Efek hover dengan shadow dinamis
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('click-effect')) {
+                    this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                }
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transition = 'var(--transition)';
+            });
+        });
+        
+        // Form submission dengan efek profesional
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulasi pengiriman form dengan efek loading
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+            submitBtn.disabled = true;
+            submitBtn.classList.add('click-effect');
+            
+            // Efek sukses dengan animasi
+            setTimeout(() => {
+                // Buat elemen konfirmasi
+                const successMsg = document.createElement('div');
+                successMsg.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: white;
+                        padding: 2rem;
+                        border-radius: var(--border-radius);
+                        box-shadow: var(--shadow-hover);
+                        text-align: center;
+                        z-index: 10000;
+                        animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                    ">
+                        <i class="fas fa-check-circle" style="color: var(--primary-color); font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Pesan Terkirim!</h3>
+                        <p>Terima kasih! Saya akan membalas pesan Anda dalam 1x24 jam.</p>
+                        <button id="closeSuccess" style="
+                            margin-top: 1rem;
+                            padding: 0.5rem 2rem;
+                            background: var(--primary-color);
+                            color: white;
+                            border: none;
+                            border-radius: 50px;
+                            cursor: pointer;
+                        ">Tutup</button>
+                    </div>
+                    <div style="
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.5);
+                        z-index: 9999;
+                    "></div>
+                `;
+                
+                // Tambahkan style untuk animasi
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes popIn {
+                        0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+                        100% { transform: translate(-50%, -50%) scale(1); opacity: 1); }
+                `;
+                document.head.appendChild(style);
+                
+                document.body.appendChild(successMsg);
+                
+                // Reset form
+                contactForm.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('click-effect');
+                
+                // Tutup pesan sukses
+                document.getElementById('closeSuccess').addEventListener('click', function() {
+                    document.body.removeChild(successMsg);
+                });
+                
+                // Tutup pesan sukses setelah 5 detik
+                setTimeout(() => {
+                    if (document.body.contains(successMsg)) {
+                        document.body.removeChild(successMsg);
+                    }
+                }, 5000);
+            }, 1500);
+        });
+        
+        // Efek ketik teks profesional untuk hero section
+        const heroTitle = document.querySelector('.hero h1');
+        const heroSubtitle = document.querySelector('.hero-subtitle');
+        const heroDescription = document.querySelector('.hero-description');
+        
+        const originalTitle = heroTitle.textContent;
+        const originalSubtitle = heroSubtitle.textContent;
+        const originalDescription = heroDescription.textContent;
+        
+        heroTitle.textContent = '';
+        heroSubtitle.textContent = '';
+        heroDescription.textContent = '';
+        
+        let titleIndex = 0;
+        let subtitleIndex = 0;
+        let descriptionIndex = 0;
+        
+        function typeWriterTitle() {
+            if (titleIndex < originalTitle.length) {
+                heroTitle.textContent += originalTitle.charAt(titleIndex);
+                titleIndex++;
+                setTimeout(typeWriterTitle, 50);
+            } else {
+                setTimeout(typeWriterSubtitle, 300);
+            }
+        }
+        
+        function typeWriterSubtitle() {
+            if (subtitleIndex < originalSubtitle.length) {
+                heroSubtitle.textContent += originalSubtitle.charAt(subtitleIndex);
+                subtitleIndex++;
+                setTimeout(typeWriterSubtitle, 50);
+            } else {
+                setTimeout(typeWriterDescription, 300);
+            }
+        }
+        
+        function typeWriterDescription() {
+            if (descriptionIndex < originalDescription.length) {
+                heroDescription.textContent += originalDescription.charAt(descriptionIndex);
+                descriptionIndex++;
+                setTimeout(typeWriterDescription, 30);
+            }
+        }
+        
+        // Mulai efek ketik setelah halaman dimuat
+        setTimeout(typeWriterTitle, 500);
+        
+        // Efek partikel background sederhana
+        const createParticle = () => {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '4px';
+            particle.style.height = '4px';
+            particle.style.background = 'var(--primary-color)';
+            particle.style.borderRadius = '50%';
+            particle.style.top = Math.random() * 100 + 'vh';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.opacity = '0.3';
+            particle.style.zIndex = '-1';
+            particle.style.animation = `float ${Math.random() * 5 + 3}s linear infinite`;
+            
+            // Tambahkan style untuk animasi float
+            const style = document.createElement('style');
+            if (!document.querySelector('#particle-style')) {
+                style.id = 'particle-style';
+                style.textContent = `
+                    @keyframes float {
+                        0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+                        50% { transform: translateY(-20px) translateX(10px); opacity: 0.6; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(particle);
+            
+            // Hapus partikel setelah animasi selesai
+            setTimeout(() => {
+                if (particle.parentNode === document.body) {
+                    document.body.removeChild(particle);
+                }
+            }, 8000);
+        };
+        
+        // Buat partikel secara berkala
+        setInterval(createParticle, 500);
+        
+        // Buat beberapa partikel awal
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createParticle, i * 300);
+        }
+        
+        // Efek ripple saat mengklik di mana saja
+        document.addEventListener('click', function(e) {
+            // Jangan buat ripple jika mengklik elemen yang sudah ada efek khusus
+            if (e.target.closest('.interactive-element') || e.target.closest('#menuToggle')) return;
+            
+            const ripple = document.createElement('div');
+            ripple.style.position = 'fixed';
+            ripple.style.width = '20px';
+            ripple.style.height = '20px';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = 'rgba(138, 43, 226, 0.3)';
+            ripple.style.top = e.clientY - 10 + 'px';
+            ripple.style.left = e.clientX - 10 + 'px';
+            ripple.style.zIndex = '9998';
+            ripple.style.animation = 'ripple 0.6s linear forwards';
+            
+            // Tambahkan style untuk animasi ripple
+            const style = document.createElement('style');
+            if (!document.querySelector('#ripple-style')) {
+                style.id = 'ripple-style';
+                style.textContent = `
+                    @keyframes ripple {
+                        0% { transform: scale(1); opacity: 0.7; }
+                        100% { transform: scale(20); opacity: 0; }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(ripple);
+            
+            // Hapus ripple setelah animasi selesai
+            setTimeout(() => {
+                if (ripple.parentNode === document.body) {
+                    document.body.removeChild(ripple);
+                }
+            }, 600);
         });
     </script>
 </body>
